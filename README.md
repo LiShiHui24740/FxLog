@@ -4,3 +4,11 @@
 #### 效果
 ![github](https://github.com/LiShiHui24740/FxLog/blob/master/Log/img/log1.png)  
 ![github](https://github.com/LiShiHui24740/FxLog/blob/master/Log/img/log2.png) 
+#### 集成
+```
+dependencies {
+    implementation 'com.github.airland:fxlog:1.0.0'
+    annotationProcessor 'com.github.airland:fxlog-compiler:1.0.0'
+}
+
+```
