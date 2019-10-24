@@ -23,5 +23,4 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api project(":fxlog_annotation")
-    implementation 'org.jetbrains:annotations-java5:15.0'
 }
