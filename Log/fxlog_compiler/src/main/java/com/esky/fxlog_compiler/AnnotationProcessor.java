@@ -137,28 +137,28 @@ public class AnnotationProcessor extends AbstractProcessor {
             .addModifiers(PUBLIC, STATIC)
             .addParameter(String.class, "tag")
             .addParameter(String.class, "message")
-            .addStatement("logImp.printLogD($L,$L,$L, tag, message)", printer, converter, showLevel)
+            .addStatement("logImp.printLogE($L,$L,$L, tag, message)", printer, converter, showLevel)
             .build();
         methodSpecs.add(methodSpec2);
         MethodSpec methodSpec3 = MethodSpec.methodBuilder("v" + methodName)
             .addModifiers(PUBLIC, STATIC)
             .addParameter(String.class, "tag")
             .addParameter(String.class, "message")
-            .addStatement("logImp.printLogD($L,$L,$L, tag, message)", printer, converter, showLevel)
+            .addStatement("logImp.printLogV($L,$L,$L, tag, message)", printer, converter, showLevel)
             .build();
         methodSpecs.add(methodSpec3);
         MethodSpec methodSpec4 = MethodSpec.methodBuilder("w" + methodName)
             .addModifiers(PUBLIC, STATIC)
             .addParameter(String.class, "tag")
             .addParameter(String.class, "message")
-            .addStatement("logImp.printLogD($L,$L,$L, tag, message)", printer, converter, showLevel)
+            .addStatement("logImp.printLogW($L,$L,$L, tag, message)", printer, converter, showLevel)
             .build();
         methodSpecs.add(methodSpec4);
         MethodSpec methodSpec5 = MethodSpec.methodBuilder("i" + methodName)
             .addModifiers(PUBLIC, STATIC)
             .addParameter(String.class, "tag")
             .addParameter(String.class, "message")
-            .addStatement("logImp.printLogD($L,$L,$L, tag, message)", printer, converter, showLevel)
+            .addStatement("logImp.printLogI($L,$L,$L, tag, message)", printer, converter, showLevel)
             .build();
         methodSpecs.add(methodSpec5);
 

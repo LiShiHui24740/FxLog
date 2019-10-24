@@ -18,6 +18,6 @@ import com.esky.fxlog_annotation.Converter;
 public class XmlConverter implements ILogConverter {
     @Override
     public String convert(@Nullable String log) {
-        return "李世辉啊啊啊";
+        return "AirLand-"+log;
     }
 }

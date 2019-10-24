@@ -1,8 +1,6 @@
 package com.esky.fxlog.converter;
 
 
-import org.jetbrains.annotations.Nullable;
-
 /**
  * @author AirLand
  * @time on 2019-09-26 15:55
@@ -12,5 +10,5 @@ import org.jetbrains.annotations.Nullable;
  * @describe:
  */
 public interface ILogConverter {
-    String convert(@Nullable String log);
+    String convert(String log);
 }

@@ -18,6 +18,13 @@ import com.esky.fxlog_annotation.Printer;
 public class CustomPrinter implements IPrinter {
     @Override
     public void printLog(ILogConverter iLogConverter, int showLevel, int logLevel, String tag, String message) {
-        Log.d(tag, "lishihui-" + message);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(" \n***********************************************")
+            .append("\n*")
+            .append("\t")
+            .append(message)
+            .append("\t\t")
+            .append("\n***********************************************");
+        Log.d(tag, stringBuilder.toString());
     }
 }
