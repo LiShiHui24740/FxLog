@@ -21,17 +21,38 @@ dependencies {
   FxLog.vJson("AirLand", "{\"formtArrs\":[],\"info\":{\"appId\":\"10141c160b424dd186d75e2aa72d43e2\",\"roomToken\":\"00610141c160b424dd186d75e2aa72d43e2IAC8LzccZZcy5rwgigsGxl\",\"roomid\":1084726,\"sid\":1084725},\"msg\":\"success\",\"result\":1000,\"suc\":true,\"useTemplate\":true}");
   FxLog.eStackJson("AirLand", "{\"formtArrs\":[],\"info\":{\"appId\":\"10141c160b424dd186d75e2aa72d43e2\",\"roomToken\":\"00610141c160b424dd186d75e2aa72d43e2IAC8LzccZZcy5rwgigsGxl\",\"roomid\":1084726,\"sid\":1084725},\"msg\":\"success\",\"result\":1000,\"suc\":true,\"useTemplate\":true}");
  ```
-#### 高级用法
-1.自定义转换器
-相对日志进行格式化处理，比如json，xml等格式的日志，库中目前默认封装的有json格式转换器，要实现自己的转换器如下：
+#### 自定义转换器
+需要对日志内容进行格式化处理，比如json，xml等格式的日志，库中目前默认封装的有json格式转换器，要实现自己的转换器如下：
 ```
-#实现ILogConverter接口同时，添加@Converter注解，name是该转换器的名字，然后rebuild一下
-#FxLog类中会自动生成对应的方法： FxLog.iXml("AirLand", "自定义XmlConverter，这里只是一个例子没有实现xml格式化");
+#实现ILogConverter接口同时添加@Converter注解，name是该转换器的名字，然后rebuild一下
+#FxLog类中会自动生成对应的方法例如： FxLog.iXml("AirLand", "自定义XmlConverter，这里只是一个例子没有实现xml格式化");
+
 @Converter(name = "Xml")
 public class XmlConverter implements ILogConverter {
     @Override
     public String convert(@Nullable String log) {
         return "AirLand-"+log;
+    }
+}
+```
+#### 自定义打印器
+如果不满足现有的打印效果可以自定义自己的打印器，想怎么打印就怎么打印，例如：
+```
+#实现IPrinter接口同时添加@Printer注解，name是打印器的名字，然后rebuild一下
+#FxLog类中会自动生成对应的方法例如：FxLog.dCustomPrinter("AirLand","自定义Printer");
+
+@Printer(name = "CustomPrinter")
+public class CustomPrinter implements IPrinter {
+    @Override
+    public void printLog(ILogConverter iLogConverter, int showLevel, int logLevel, String tag, String message) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(" \n***********************************************")
+            .append("\n*")
+            .append("\t")
+            .append(message)
+            .append("\t\t")
+            .append("\n***********************************************");
+        Log.d(tag, stringBuilder.toString());
     }
 }
 ```
