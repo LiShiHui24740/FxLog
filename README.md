@@ -21,3 +21,17 @@ dependencies {
   FxLog.vJson("AirLand", "{\"formtArrs\":[],\"info\":{\"appId\":\"10141c160b424dd186d75e2aa72d43e2\",\"roomToken\":\"00610141c160b424dd186d75e2aa72d43e2IAC8LzccZZcy5rwgigsGxl\",\"roomid\":1084726,\"sid\":1084725},\"msg\":\"success\",\"result\":1000,\"suc\":true,\"useTemplate\":true}");
   FxLog.eStackJson("AirLand", "{\"formtArrs\":[],\"info\":{\"appId\":\"10141c160b424dd186d75e2aa72d43e2\",\"roomToken\":\"00610141c160b424dd186d75e2aa72d43e2IAC8LzccZZcy5rwgigsGxl\",\"roomid\":1084726,\"sid\":1084725},\"msg\":\"success\",\"result\":1000,\"suc\":true,\"useTemplate\":true}");
  ```
+#### 高级用法
+1.自定义转换器
+相对日志进行格式化处理，比如json，xml等格式的日志，库中目前默认封装的有json格式转换器，要实现自己的转换器如下：
+```
+#实现ILogConverter接口同时，添加@Converter注解，name是该转换器的名字，然后rebuild一下
+#FxLog类中会自动生成对应的方法： FxLog.iXml("AirLand", "自定义XmlConverter，这里只是一个例子没有实现xml格式化");
+@Converter(name = "Xml")
+public class XmlConverter implements ILogConverter {
+    @Override
+    public String convert(@Nullable String log) {
+        return "AirLand-"+log;
+    }
+}
+```
