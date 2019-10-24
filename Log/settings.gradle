@@ -1,0 +1,2 @@
+include ':app', ':fxlog_annotation', ':fxlog_compiler', ':fxlog'
+rootProject.name='Log'
